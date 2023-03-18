@@ -2,6 +2,7 @@ import React from "react";
 import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
+import Input from "../Reusable/Input";
 
 function Register() {
 	const navigate = useNavigate();
@@ -58,108 +59,40 @@ function Register() {
 					<div className="login shadow-sm">
 						<h2 className="heading">Register</h2>
 						<form onSubmit={formik.handleSubmit} className="form">
-							<div className="mb-3">
-								<label htmlFor="name" className="form-label form__label">
-									Name
-								</label>
-								<input
-									id="name"
-									type="text"
-									name="name"
-									placeholder="Enter name"
-									className="form-control form__input"
-									autoComplete="off"
-									value={formik.values.name}
-									onBlur={formik.handleBlur}
-									onChange={formik.handleChange}
-								/>
-								{formik.touched.name && formik.errors.name ? (
-									<div className="error-text">{formik.errors.name}</div>
-								) : null}
-							</div>
-							<div className="mb-3">
-								<label htmlFor="email" className="form-label form__label">
-									Email
-								</label>
-								<input
-									id="email"
-									type="email"
-									name="email"
-									placeholder="Enter Email"
-									className="form-control form__input"
-									autoComplete="off"
-									value={formik.values.email}
-									onBlur={formik.handleBlur}
-									onChange={formik.handleChange}
-								/>
-								{formik.touched.email && formik.errors.email ? (
-									<div className="error-text">{formik.errors.email}</div>
-								) : null}
-							</div>
-							<div className="mb-3">
-								<label htmlFor="password" className="form-label form__label">
-									Password
-								</label>
-								<input
-									id="password"
-									type="password"
-									name="password"
-									placeholder="Enter password"
-									className="form-control form__input"
-									autoComplete="off"
-									value={formik.values.password}
-									onBlur={formik.handleBlur}
-									onChange={formik.handleChange}
-								/>
-								{formik.touched.password && formik.errors.password ? (
-									<div className="error-text">{formik.errors.password}</div>
-								) : null}
-							</div>
-							<div className="mb-3">
-								<label
-									htmlFor="confirm_password"
-									className="form-label form__label"
-								>
-									Confirm Password
-								</label>
-								<input
-									id="confirm_password"
-									type="password"
-									name="confirm_password"
-									placeholder="Enter Confirm Password"
-									className="form-control form__input"
-									autoComplete="off"
-									value={formik.values.confirm_password}
-									onBlur={formik.handleBlur}
-									onChange={formik.handleChange}
-								/>
-								{formik.touched.confirm_password &&
-								formik.errors.confirm_password ? (
-									<div className="error-text">
-										{formik.errors.confirm_password}
-									</div>
-								) : null}
-							</div>
-							<div className="mb-3">
-								<label htmlFor="mobile" className="form-label form__label">
-									Mobile Number
-								</label>
-								<input
-									id="mobile"
-									type="text"
-									name="mobile"
-									maxLength={10}
-									placeholder="Enter Mobile Number"
-									autoComplete="off"
-									className="form-control form__input"
-									value={formik.values.mobile}
-									onBlur={formik.handleBlur}
-									onChange={formik.handleChange}
-								/>
-								{formik.touched.mobile && formik.errors.mobile ? (
-									<div className="error-text">{formik.errors.mobile}</div>
-								) : null}
-							</div>
+							<Input
+								label="Name"
+								name="name"
+								placeholder="Enter Name"
+								formik={formik}
+							/>
+							<Input
+								label="Email"
+								type="email"
+								name="email"
+								placeholder="Enter Email"
+								formik={formik}
+							/>
+							<Input
+								label="Password"
+								type="password"
+								name="password"
+								placeholder="Enter Password"
+								formik={formik}
+							/>
+							<Input
+								label="Confirm Password"
+								type="password"
+								name="confirm_password"
+								placeholder="Enter Confirm Password"
+								formik={formik}
+							/>
+							<Input
+								label="Mobile Number"
+								name="mobile"
+								placeholder="Enter Mobile"
+								formik={formik}
+								maxLength={10}
+							/>
 							<button type="submit" className="btn btn-primary w-100 mt-2">
 								Register
 							</button>
